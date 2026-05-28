@@ -1,0 +1,955 @@
+/*
+ * Hairline — CSS Reset for Editorial Layouts
+ * v1.0.0 · github.com/nsimona/hairline
+ *
+ * A surgical reset for type-first, reading-first interfaces.
+ * Not a framework. Not a component library. Just honest defaults.
+ *
+ * Table of Contents
+ * ─────────────────────────────────────────────────
+ *  0. Tokens
+ *  1. Box Model
+ *  2. Document & Body
+ *  3. Typography
+ *  4. Headings
+ *  5. Body Copy
+ *  6. Lists
+ *  7. Links
+ *  8. Media
+ *  9. Tables
+ * 10. Forms & Interactive
+ * 11. Sectioning
+ * 12. Code & Pre
+ * 13. Horizontal Rule
+ * 14. Utilities
+ * 15. Print
+ * ─────────────────────────────────────────────────
+ */
+
+
+/* ─── 0. Tokens ─────────────────────────────────────────────────────────── */
+
+:root {
+  /* Type scale — minor third (1.200) */
+  --text-xs: 0.694rem;
+  --text-sm: 0.833rem;
+  --text-base: 1rem;
+  --text-md: 1.2rem;
+  --text-lg: 1.44rem;
+  --text-xl: 1.728rem;
+  --text-2xl: 2.074rem;
+  --text-3xl: 2.488rem;
+  --text-4xl: 2.986rem;
+  --text-5xl: 3.583rem;
+
+  /* Spacing — 8-point grid */
+  --space-1: 0.25rem;
+  /*  4px */
+  --space-2: 0.5rem;
+  /*  8px */
+  --space-3: 0.75rem;
+  /* 12px */
+  --space-4: 1rem;
+  /* 16px */
+  --space-6: 1.5rem;
+  /* 24px */
+  --space-8: 2rem;
+  /* 32px */
+  --space-12: 3rem;
+  /* 48px */
+  --space-16: 4rem;
+  /* 64px */
+  --space-24: 6rem;
+  /* 96px */
+  --space-32: 8rem;
+  /* 128px */
+
+  /* Measure — optimal line width for reading */
+  --measure: 65ch;
+  --measure-narrow: 45ch;
+  --measure-wide: 80ch;
+
+  /* Leading */
+  --leading-tight: 1.2;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-loose: 1.8;
+
+  /* Tracking */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.04em;
+  --tracking-wider: 0.08em;
+  --tracking-widest: 0.16em;
+
+  /* Ink & surface */
+  --color-ink: hsl(220 20% 10%);
+  --color-ink-muted: hsl(220 12% 42%);
+  --color-ink-faint: hsl(220 10% 68%);
+  --color-ink-hairline: hsl(220 10% 88%);
+  --color-surface: hsl(0 0% 99%);
+  --color-surface-alt: hsl(220 14% 97%);
+  --color-accent: hsl(220 80% 48%);
+  --color-accent-muted: hsl(220 50% 92%);
+
+  /* Border */
+  --border-hairline: 1px solid var(--color-ink-hairline);
+  --border-thin: 1px solid var(--color-ink-faint);
+  --border-medium: 2px solid var(--color-ink);
+
+  /* Radius */
+  --radius-sm: 2px;
+  --radius: 4px;
+  --radius-lg: 8px;
+
+  /* Focus */
+  --focus-ring: 0 0 0 3px var(--color-accent-muted),
+    0 0 0 1px var(--color-accent);
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 350ms;
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dark mode — system preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-ink: hsl(220 15% 92%);
+    --color-ink-muted: hsl(220 10% 62%);
+    --color-ink-faint: hsl(220 8% 42%);
+    --color-ink-hairline: hsl(220 8% 22%);
+    --color-surface: hsl(220 16% 10%);
+    --color-surface-alt: hsl(220 14% 14%);
+    --color-accent: hsl(220 80% 68%);
+    --color-accent-muted: hsl(220 50% 20%);
+  }
+}
+
+
+/* ─── 1. Box Model ───────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Prevent size inflation */
+* {
+  min-width: 0;
+}
+
+
+/* ─── 2. Document & Body ─────────────────────────────────────────────────── */
+
+html {
+  /* Prevent font inflation on mobile */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
+  /* Smooth scrolling — respects reduced motion below */
+  scroll-behavior: smooth;
+
+  /* Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+
+  /* Tab size for code blocks */
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+
+body {
+  font-family:
+    "Iowan Old Style",
+    "Palatino Linotype",
+    "URW Palladio L",
+    P052,
+    Georgia,
+    serif;
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  color: var(--color-ink);
+  background-color: var(--color-surface);
+
+  /* Hyphenation for justified / narrow columns */
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Respect motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+/* ─── 3. Typography ──────────────────────────────────────────────────────── */
+
+/* Sensible typographic inheritance for form fields */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Balance headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/* Prevent orphaned words */
+p {
+  text-wrap: pretty;
+}
+
+
+/* ─── 4. Headings ────────────────────────────────────────────────────────── */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-ink);
+}
+
+h1 {
+  font-size: var(--text-4xl);
+}
+
+h2 {
+  font-size: var(--text-3xl);
+}
+
+h3 {
+  font-size: var(--text-2xl);
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+h5 {
+  font-size: var(--text-lg);
+}
+
+h6 {
+  font-size: var(--text-md);
+}
+
+/* Kicker / eyebrow label before a heading */
+h1+[data-kicker],
+h2+[data-kicker],
+h3+[data-kicker] {
+  margin-top: 0;
+}
+
+[data-kicker] {
+  display: block;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-2);
+}
+
+
+/* ─── 5. Body Copy ───────────────────────────────────────────────────────── */
+
+p {
+  max-width: var(--measure);
+  line-height: var(--leading-normal);
+}
+
+p+p {
+  margin-top: var(--space-4);
+}
+
+/* Dropcap utility */
+p[data-dropcap]::first-letter {
+  float: left;
+  font-size: calc(var(--text-base) * 3.4);
+  line-height: 0.8;
+  padding-right: var(--space-2);
+  padding-top: var(--space-1);
+  font-weight: 400;
+}
+
+strong,
+b {
+  font-weight: 600;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+small {
+  font-size: var(--text-sm);
+}
+
+mark {
+  background-color: hsl(50 100% 80%);
+  color: inherit;
+  padding: 0 var(--space-1);
+  border-radius: var(--radius-sm);
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+/* Lining figures for tabular data */
+[data-figures="tabular"] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Oldstyle figures for body copy */
+[data-figures="oldstyle"] {
+  font-variant-numeric: oldstyle-nums;
+}
+
+
+/* ─── 6. Lists ───────────────────────────────────────────────────────────── */
+
+ul,
+ol {
+  padding-left: var(--space-6);
+  max-width: var(--measure);
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  margin-top: var(--space-2);
+  line-height: var(--leading-normal);
+}
+
+li::marker {
+  color: var(--color-ink-muted);
+}
+
+/* Nested lists */
+li>ul,
+li>ol {
+  margin-top: var(--space-2);
+}
+
+/* Unstyled list reset */
+[role="list"],
+[data-list="bare"] {
+  list-style: none;
+  padding: 0;
+}
+
+/* Definition lists */
+dl {
+  max-width: var(--measure);
+}
+
+dt {
+  font-weight: 600;
+  margin-top: var(--space-4);
+}
+
+dd {
+  padding-left: var(--space-6);
+  color: var(--color-ink-muted);
+}
+
+
+/* ─── 7. Links ───────────────────────────────────────────────────────────── */
+
+a {
+  color: var(--color-accent);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-skip-ink: auto;
+  transition: color var(--duration-fast) ease,
+    text-decoration-color var(--duration-fast) ease;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+a:visited {
+  color: var(--color-ink-muted);
+}
+
+a:focus-visible {
+  outline: none;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--focus-ring);
+}
+
+/* External links */
+a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.75em;
+  vertical-align: super;
+  opacity: 0.5;
+}
+
+a[target="_blank"][data-no-external]::after {
+  content: none;
+}
+
+
+/* ─── 8. Media ───────────────────────────────────────────────────────────── */
+
+img,
+video,
+svg,
+canvas,
+picture {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Preserve aspect ratio for replaced elements */
+img,
+video {
+  object-fit: cover;
+}
+
+/* Remove alt text styling */
+img[alt] {
+  font-style: italic;
+  font-size: var(--text-sm);
+  color: var(--color-ink-muted);
+}
+
+/* Figure + caption */
+figure {
+  margin: 0;
+}
+
+figcaption {
+  font-size: var(--text-sm);
+  line-height: var(--leading-snug);
+  color: var(--color-ink-muted);
+  margin-top: var(--space-3);
+  max-width: var(--measure-narrow);
+}
+
+/* SVG icon sizing */
+svg[aria-hidden="true"] {
+  pointer-events: none;
+  fill: currentColor;
+}
+
+
+/* ─── 9. Tables ──────────────────────────────────────────────────────────── */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-sm);
+}
+
+caption {
+  text-align: left;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-3);
+}
+
+thead {
+  border-bottom: var(--border-medium);
+}
+
+th {
+  text-align: left;
+  font-weight: 600;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  padding: var(--space-3) var(--space-4);
+}
+
+td {
+  padding: var(--space-3) var(--space-4);
+  vertical-align: top;
+  border-bottom: var(--border-hairline);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Zebra striping */
+tbody tr:nth-child(even) {
+  background-color: var(--color-surface-alt);
+}
+
+/* Numeric column alignment */
+td[data-type="number"],
+th[data-type="number"] {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ─── 10. Forms & Interactive ────────────────────────────────────────────── */
+
+/* Base field */
+input,
+textarea,
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  border: var(--border-thin);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  width: 100%;
+  transition: border-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: var(--focus-ring);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-ink-faint);
+}
+
+input[disabled],
+textarea[disabled],
+select[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Textarea — no horizontal resize */
+textarea {
+  resize: vertical;
+  min-height: 7em;
+}
+
+/* Select arrow */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  padding-right: var(--space-8);
+  cursor: pointer;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-ink-muted);
+  margin-bottom: var(--space-1);
+}
+
+/* Buttons */
+button,
+[role="button"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-4);
+  transition: background-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+button:disabled,
+[role="button"][aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Checkbox & radio */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1em;
+  height: 1em;
+  padding: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--color-accent);
+}
+
+/* Range */
+input[type="range"] {
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  accent-color: var(--color-accent);
+}
+
+/* Number — remove spin buttons */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+/* Search — remove clear button */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+
+/* ─── 11. Sectioning ─────────────────────────────────────────────────────── */
+
+main {
+  display: block;
+  /* IE11 */
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Skip link — visible on focus */
+[data-skip-link] {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface);
+  color: var(--color-accent);
+  border: var(--border-thin);
+  border-radius: var(--radius);
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 9999;
+  transform: translateY(-200%);
+  transition: transform var(--duration-fast) ease;
+}
+
+[data-skip-link]:focus-visible {
+  transform: translateY(0);
+}
+
+
+/* ─── 12. Code & Pre ─────────────────────────────────────────────────────── */
+
+code,
+kbd,
+samp {
+  font-family:
+    "JetBrains Mono",
+    "Fira Code",
+    "Cascadia Code",
+    ui-monospace,
+    "SF Mono",
+    "Consolas",
+    monospace;
+  font-size: 0.875em;
+  font-variant-ligatures: none;
+}
+
+code {
+  background-color: var(--color-surface-alt);
+  color: var(--color-ink);
+  padding: 0.1em 0.35em;
+  border-radius: var(--radius-sm);
+  border: var(--border-hairline);
+}
+
+pre {
+  overflow-x: auto;
+  background-color: var(--color-surface-alt);
+  border: var(--border-hairline);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  line-height: var(--leading-snug);
+  font-size: var(--text-sm);
+  tab-size: 2;
+  -moz-tab-size: 2;
+}
+
+/* Reset code inside pre */
+pre>code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+kbd {
+  background-color: var(--color-surface-alt);
+  border: var(--border-thin);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-sm);
+  padding: 0.1em 0.4em;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+}
+
+
+/* ─── 13. Horizontal Rule ────────────────────────────────────────────────── */
+
+hr {
+  border: none;
+  border-top: var(--border-hairline);
+  margin: var(--space-8) 0;
+}
+
+/* Ornament variant */
+hr[data-ornament] {
+  border: none;
+  text-align: center;
+  overflow: visible;
+  color: var(--color-ink-faint);
+}
+
+hr[data-ornament]::after {
+  content: "* * *";
+  display: inline-block;
+  position: relative;
+  top: -0.65em;
+  padding: 0 var(--space-4);
+  background: var(--color-surface);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-widest);
+}
+
+/* Section divider with label */
+hr[data-label]::before {
+  content: attr(data-label);
+}
+
+
+/* ─── 14. Utilities ──────────────────────────────────────────────────────── */
+
+/* Visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Measure utilities */
+.measure {
+  max-width: var(--measure);
+}
+
+.measure-narrow {
+  max-width: var(--measure-narrow);
+}
+
+.measure-wide {
+  max-width: var(--measure-wide);
+}
+
+.measure-none {
+  max-width: none;
+}
+
+/* Balance & pretty text */
+.balance {
+  text-wrap: balance;
+}
+
+.pretty {
+  text-wrap: pretty;
+}
+
+/* Muted text */
+.muted {
+  color: var(--color-ink-muted);
+}
+
+.faint {
+  color: var(--color-ink-faint);
+}
+
+/* Small caps for proper nouns / labels */
+.smallcaps {
+  font-variant-caps: small-caps;
+  letter-spacing: var(--tracking-wide);
+}
+
+/* Lede / standfirst */
+.lede {
+  font-size: var(--text-md);
+  line-height: var(--leading-snug);
+  color: var(--color-ink-muted);
+  max-width: var(--measure);
+}
+
+/* Capo — large decorative opener */
+.capo {
+  font-size: var(--text-5xl);
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+}
+
+/* Pull quote */
+.pullquote {
+  font-size: var(--text-lg);
+  line-height: var(--leading-snug);
+  font-style: italic;
+  color: var(--color-ink);
+  border-left: 3px solid var(--color-ink);
+  padding-left: var(--space-6);
+  margin: var(--space-8) 0;
+  max-width: var(--measure-narrow);
+}
+
+
+/* ─── 15. Print ──────────────────────────────────────────────────────────── */
+
+@media print {
+
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 80%;
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  pre {
+    white-space: pre-wrap;
+  }
+
+  blockquote,
+  pre {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  h2,
+  h3,
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  img {
+    page-break-inside: avoid;
+  }
+}
