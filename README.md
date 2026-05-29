@@ -4,7 +4,7 @@
 
 Hairline is a surgical reset for type-first, reading-first interfaces. It isn't a framework, a component library, or an opinionated design system. It's a single `.css` file that gives your editorial HTML honest, beautiful defaults — and gets out of the way.
 
-→ **[Live demo](https://simonanasteva.github.io/hairline)**  
+→ **[Live demo](https://nsimona.github.io/hairline)**  
 → **[simonanasteva.com](https://simonanasteva.com)**
 
 ---
