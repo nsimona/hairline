@@ -2,7 +2,7 @@
 
 **A one-file CSS reset for editorial layouts.**
 
-Hairline is a surgical reset for type-first, reading-first interfaces. It isn't a framework, a component library, or an opinionated design system. It's a single `.css` file that gives your editorial HTML honest, beautiful defaults - and gets out of the way.
+Hairline is a surgical reset for type-first, reading-first interfaces. It isn't a framework, a component library, or an opinionated design system. It's a single `.css` file that gives your editorial HTML honest, beautiful defaults — and gets out of the way.
 
 → **[Live demo](https://simonanasteva.github.io/hairline)**  
 → **[simonanasteva.com](https://simonanasteva.com)**
@@ -13,7 +13,7 @@ Hairline is a surgical reset for type-first, reading-first interfaces. It isn't 
 
 | Section | What it does |
 |---|---|
-| **Design tokens** | Full set of CSS custom properties - type scale, spacing, measure, leading, tracking, ink/surface colors, radius, motion |
+| **Design tokens** | Full set of CSS custom properties — type scale, spacing, measure, leading, tracking, ink/surface colors, radius, motion |
 | **Box model** | Universal `border-box`, zeroed margins, `min-width: 0` to prevent grid/flex inflation |
 | **Document & body** | Serif body font stack, font smoothing, text rendering, `prefers-reduced-motion` |
 | **Type scale** | Minor-third (×1.200) scale from `--text-xs` to `--text-5xl` |
@@ -24,7 +24,7 @@ Hairline is a surgical reset for type-first, reading-first interfaces. It isn't 
 | **Media** | Block display, aspect-ratio preservation, `figure` + `figcaption` |
 | **Tables** | Collapsed borders, zebra striping, tabular-nums, `[data-type="number"]` alignment |
 | **Forms** | Normalised inputs, custom select arrow, smooth focus rings, accessible buttons |
-| **Code** | Inline `code`, `pre` blocks, `kbd` lift - all in JetBrains Mono |
+| **Code** | Inline `code`, `pre` blocks, `kbd` lift — all in JetBrains Mono |
 | **Horizontal rules** | Plain, ornament (`[data-ornament]`), labelled (`[data-label]`) |
 | **Utilities** | `.sr-only`, `.measure`, `.lede`, `.pullquote`, `.capo`, `.smallcaps`, `.muted`, `.faint` |
 | **Print** | Clean black output, expanded link URLs, orphan/widow control |
@@ -38,7 +38,7 @@ Hairline is a surgical reset for type-first, reading-first interfaces. It isn't 
 curl -O https://raw.githubusercontent.com/simonanasteva/hairline/main/hairline.css
 ```
 
-**Or copy-paste** the single file into your project - it has no dependencies.
+**Or copy-paste** the single file into your project — it has no dependencies.
 
 **Link from HTML:**
 ```html
@@ -132,13 +132,13 @@ The `↗` is added automatically via CSS to any `<a target="_blank">`. Suppress 
 Hairline is opinionated about one thing: editorial type belongs in serif. The body font stack (Iowan Old Style → Palatino → Georgia) is chosen to read beautifully at long-form length. If you're building a product UI, layer your own `font-family` on top.
 
 **Why weight 400 headings?**  
-Bold headings fight the text. Light headings create hierarchy through size alone - a more considered, magazine-like hierarchy.
+Bold headings fight the text. Light headings create hierarchy through size alone — a more considered, magazine-like hierarchy.
 
 **Why `min-width: 0`?**  
 Without it, flex and grid children can overflow their containers when content is wide. This is the silent cause of a hundred layout bugs.
 
 **Why `text-wrap: pretty`?**  
-Prevents single-word orphans on the last line of a paragraph - a subtle but meaningful typographic improvement in modern browsers.
+Prevents single-word orphans on the last line of a paragraph — a subtle but meaningful typographic improvement in modern browsers.
 
 **Why `65ch` measure?**  
 Research consistently puts comfortable reading width between 45–75 characters. `65ch` is the sweet spot for body copy. Adjust via `--measure`.
@@ -156,7 +156,7 @@ All modern browsers. IE is not supported and will not be.
 | `text-wrap: pretty` | Chrome 117+, Firefox 127+ |
 | `accent-color` | Chrome 93+, Firefox 92+, Safari 15.4+ |
 
-For `text-wrap` in older browsers, the line simply wraps normally - no breakage, just no enhancement.
+For `text-wrap` in older browsers, the line simply wraps normally — no breakage, just no enhancement.
 
 ---
 
@@ -171,10 +171,10 @@ hairline.css   ~10 KB unminified
 
 ## Contributing
 
-Issues and PRs welcome. The scope is intentionally narrow - this is a reset, not a framework. Contributions that add tokens, fix browser inconsistencies, or improve accessibility are most welcome. Contributions that add components will be declined.
+Issues and PRs welcome. The scope is intentionally narrow — this is a reset, not a framework. Contributions that add tokens, fix browser inconsistencies, or improve accessibility are most welcome. Contributions that add components will be declined.
 
 ---
 
 ## License
 
-MIT - [simonanasteva.com](https://simonanasteva.com)
+MIT — [simonanasteva.com](https://simonanasteva.com)

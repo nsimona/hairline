@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Examples — Hairline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../hairline.css">
+  <style>
+    body { font-family: 'Libre Baskerville', Georgia, serif; }
+    .page { max-width: 48rem; margin: 0 auto; padding: 5rem 1.5rem 8rem; }
+    .back { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--color-ink-faint); text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; margin-bottom: 4rem; }
+    h1 { font-size: 2.2rem; font-weight: 400; letter-spacing: -.02em; margin-bottom: .75rem; }
+    .intro { font-size: 1rem; color: var(--color-ink-muted); margin-bottom: 3rem; max-width: 50ch; line-height: 1.6; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1px; background: var(--color-ink-hairline); border: 1px solid var(--color-ink-hairline); }
+    .card { background: var(--color-surface); padding: 2rem; text-decoration: none; color: inherit; transition: background .12s; display: block; }
+    .card:hover { background: var(--color-surface-alt); }
+    .card-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--color-ink-faint); margin-bottom: .75rem; }
+    .card-title { font-size: 1.1rem; font-weight: 400; margin-bottom: .5rem; letter-spacing: -.01em; }
+    .card-desc { font-size: .85rem; color: var(--color-ink-muted); line-height: 1.6; }
+    .card-arrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--color-ink-faint); margin-top: 1.25rem; display: block; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <a href="../docs/" class="back">← hairline</a>
+  <h1>Examples</h1>
+  <p class="intro">Each example uses only hairline.css plus minimal layout-only overrides — no additional design system, no extra utilities.</p>
+  <div class="grid">
+    <a href="article.html" class="card">
+      <span class="card-label">Reading layout</span>
+      <span class="card-title">Long-form article</span>
+      <p class="card-desc">Dropcap, lede, pullquote, section headings, figure + caption. The canonical editorial page.</p>
+      <span class="card-arrow">View →</span>
+    </a>
+    <a href="tables.html" class="card">
+      <span class="card-label">Data</span>
+      <span class="card-title">Tables &amp; lists</span>
+      <p class="card-desc">Zebra striping, tabular numerics, definition lists, nested lists. All from the reset.</p>
+      <span class="card-arrow">View →</span>
+    </a>
+    <a href="forms.html" class="card">
+      <span class="card-label">Interactive</span>
+      <span class="card-title">Forms</span>
+      <p class="card-desc">Text inputs, select, textarea, buttons, checkboxes. Focus rings, disabled states, validation.</p>
+      <span class="card-arrow">View →</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>

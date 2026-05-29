@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Article — Hairline Example</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../hairline.css">
+  <style>
+    body {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+
+    .page {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 8rem;
+    }
+
+    .back {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--color-ink-faint);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: 4rem;
+    }
+
+    .back:hover {
+      color: var(--color-ink);
+    }
+
+    header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: var(--border-hairline);
+    }
+
+    .pub-meta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--color-ink-faint);
+      letter-spacing: .06em;
+      margin-top: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      letter-spacing: -.02em;
+      line-height: 1.1;
+      margin: .75rem 0 1rem;
+    }
+
+    .lede {
+      font-size: 1.1rem;
+      line-height: 1.55;
+      color: var(--color-ink-muted);
+    }
+
+    article p {
+      margin-top: 1.25rem;
+      max-width: 62ch;
+    }
+
+    article p:first-of-type::first-letter {
+      float: left;
+      font-size: 3.8rem;
+      line-height: .8;
+      padding-right: .12em;
+      font-weight: 400;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: -.01em;
+      margin: 2.5rem 0 .75rem;
+    }
+
+    blockquote {
+      font-size: 1.15rem;
+      font-style: italic;
+      border-left: 2px solid var(--color-ink);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+      max-width: 46ch;
+      line-height: 1.45;
+    }
+
+    figure {
+      margin: 2.5rem 0;
+    }
+
+    .img-placeholder {
+      width: 100%;
+      height: 260px;
+      background: var(--color-surface-alt);
+      border: var(--border-hairline);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: var(--color-ink-faint);
+    }
+
+    figcaption {
+      font-size: .82rem;
+      color: var(--color-ink-muted);
+      margin-top: .65rem;
+      max-width: 45ch;
+      line-height: 1.5;
+    }
+
+    hr {
+      border: none;
+      text-align: center;
+      margin: 3rem 0;
+      color: var(--color-ink-faint);
+      font-size: 12px;
+      letter-spacing: .2em;
+    }
+
+    hr::after {
+      content: "* * *";
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <a href="../docs/" class="back">← hairline</a>
+    <header>
+      <span data-kicker>Platform engineering</span>
+      <h1>The weight of small decisions</h1>
+      <p class="lede">A decade of sitting on both sides of the seam between design and code — and what it taught me
+        about the kind of work that actually matters.</p>
+      <p class="pub-meta">Simona Nasteva &nbsp;·&nbsp; 12 min read &nbsp;·&nbsp; November 2025</p>
+    </header>
+    <article>
+      <p>Structure matters more than syntax. Most arguments about code style are really arguments about structure in
+        disguise — and knowing where to put the energy changes everything about how a system ages over time. The
+        interesting work happens in the seam.</p>
+      <p>There is a particular kind of engineer who refuses to choose sides. They don't identify as a designer, but they
+        care deeply about how things look. They don't call themselves architects, but they spend a lot of time thinking
+        about how things hold together. They are drawn to the hard problems that live in between.</p>
+
+      <blockquote>Being senior isn't about volume — of opinions, slides, or output. It's about precision.</blockquote>
+
+      <h2>The tyranny of the clean slate</h2>
+      <p>Every new codebase begins with good intentions. The first few weeks are a kind of honeymoon period — everything
+        is possible, nothing has accrued enough history to be annoying yet. The decisions you make during this window
+        have an outsized effect on everything that follows.</p>
+
+      <figure>
+        <div class="img-placeholder">640 × 360</div>
+        <figcaption>Fig. 1 — The moment a system becomes too big to hold in your head is the moment it starts to drift
+          from its original design intent.</figcaption>
+      </figure>
+
+      <p>The dangerous belief is that a clean slate means you can avoid all the mistakes that came before. You can't.
+        What you can do is make different mistakes, hopefully more interesting ones, and learn from them faster.</p>
+
+      <h2>What it means to stay close to the work</h2>
+      <p>Staying close to the work is an act of discipline, not a sign of seniority deficit. The engineers who maintain
+        the deepest context are often the ones who are most valuable in a crisis — not because they are the best
+        debuggers, but because they understand the shape of the thing well enough to know where to look.</p>
+      <p>This is the other side of the tradeoff that rarely gets discussed. Abstraction is necessary. But abstraction
+        has a cost, and that cost is measured in the distance it creates between you and the actual behavior of the
+        system at runtime.</p>
+
+      <hr>
+
+      <p>The reset exists at the start of every stylesheet. It is an act of editorial choice — a declaration of what you
+        believe HTML should look like before a single class has been applied. Hairline is my answer to that question.
+        One file. Honest defaults. Get out of the way.</p>
+    </article>
+  </div>
+</body>
+
+</html>
